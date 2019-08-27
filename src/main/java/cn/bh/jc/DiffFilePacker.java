@@ -71,6 +71,7 @@ public class DiffFilePacker {
 		if (cList == null || cList.size() == 0) {
 			return actFileList;
 		}
+		StringBuilder allChangeLog = new StringBuilder();
 		for (ChangeVO entry : cList) {
 			// 取得变更文件对应可执行文件
 			File targetFile = new File(entry.getVersion().getTargetPath());
@@ -81,7 +82,8 @@ public class DiffFilePacker {
 			List<File> exeChangeFileList = findChangeFile(targetFile, entry.getInfo().getChangeFiles());
 			// 排序
 			Collections.sort(exeChangeFileList, new Comparator<File>() {
-				public int compare(File o1, File o2) {
+				@Override
+                public int compare(File o1, File o2) {
 					return o1.getAbsolutePath().compareTo(o2.getAbsolutePath());
 				}
 
@@ -128,10 +130,14 @@ public class DiffFilePacker {
 			}
 			SysLog.log("\r\n 项目：" + entry.getVersion().getProjectName() + " 打包完成，打包到地址：" + saveFilePre);
 			SysLog.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
+			allChangeLog.append(entry.getInfo().getChangeLog());
 		}
 
 		SysLog.log("\r\n打包完成 共打包" + actFileList.size() + "个文件");
 		SysLog.log("************************************************************");
+		SysLog.log("*****************************增量日志开始*********************");
+		SysLog.log(allChangeLog.toString());
+        SysLog.log("*****************************增量日志结束*********************");
 
 		return actFileList;
 	}

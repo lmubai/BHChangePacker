@@ -54,7 +54,8 @@ public class GitVersion extends StoreVersion {
 	 * @return
 	 * @throws Exception
 	 */
-	public ChangeVO get() throws Exception {
+	@Override
+    public ChangeVO get() throws Exception {
 		// 变化的文件列表
 		ChangeInfo gitInfo = listAllSvnChange();
 		if (gitInfo == null) {

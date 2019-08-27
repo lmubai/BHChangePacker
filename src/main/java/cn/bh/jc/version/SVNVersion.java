@@ -1,12 +1,10 @@
 package cn.bh.jc.version;
 
 import java.net.URLDecoder;
+import java.text.SimpleDateFormat;
 import java.util.*;
 
-import org.tmatesoft.svn.core.SVNLogEntry;
-import org.tmatesoft.svn.core.SVNLogEntryPath;
-import org.tmatesoft.svn.core.SVNNodeKind;
-import org.tmatesoft.svn.core.SVNURL;
+import org.tmatesoft.svn.core.*;
 import org.tmatesoft.svn.core.auth.ISVNAuthenticationManager;
 import org.tmatesoft.svn.core.internal.io.dav.DAVRepositoryFactory;
 import org.tmatesoft.svn.core.io.SVNRepository;
@@ -37,14 +35,8 @@ public class SVNVersion extends StoreVersion {
 	 * 
 	 * @param inConf
 	 *            配置信息
-	 * @param target
-	 *            可运行程序（编译后程序）保存地址
 	 * @param inPara
 	 *            参数
-	 * @param startVersion
-	 *            开始版本号
-	 * @param expName
-	 *            导出工程名称
 	 * @throws Exception
 	 */
 	public SVNVersion(Config inConf, SvnParaVO inPara) throws Exception {
@@ -61,6 +53,7 @@ public class SVNVersion extends StoreVersion {
 	 * @return
 	 * @throws Exception
 	 */
+	@Override
 	public ChangeVO get() throws Exception {
 		// 变化的文件列表
 		ChangeInfo svnInfo = listAllSvnChange();
@@ -86,6 +79,7 @@ public class SVNVersion extends StoreVersion {
 			delSet.add(tempFile);
 		}
 		resVO.getInfo().setDelSet(delSet);
+		resVO.getInfo().setChangeLog(svnInfo.getChangeLog());
 		return resVO;
 	}
 
@@ -131,7 +125,18 @@ public class SVNVersion extends StoreVersion {
 			List<String> fileList = new ArrayList<String>();
 			Set<String> delSet = new HashSet<String>();
 			// 我测试这个是有顺序
+			StringBuilder changeLog = new StringBuilder();
 			for (SVNLogEntry log : logEntries) {
+				SVNProperties revisionProperties = log.getRevisionProperties();
+				Map<String, SVNPropertyValue> stringSVNPropertyValueMap = revisionProperties.asMap();
+				for (String s : stringSVNPropertyValueMap.keySet()) {
+                    SVNPropertyValue svnPropertyValue = stringSVNPropertyValueMap.get(s);
+					if ("svn:date".equals(s)) {
+					    continue;
+					}
+                    changeLog.append(svnPropertyValue + "  ");
+				}
+				changeLog.append("\n");
 				String key;
 				for (Map.Entry<String, SVNLogEntryPath> entry : log.getChangedPaths().entrySet()) {
 					key = entry.getKey();
@@ -147,7 +152,6 @@ public class SVNVersion extends StoreVersion {
 							fileList.remove(key);
 							// 删除了
 							delSet.add(key);
-
 						} else {
 							if (!fileList.contains(key)) {
 								fileList.add(key);
@@ -164,6 +168,7 @@ public class SVNVersion extends StoreVersion {
 			ChangeInfo resVO = new ChangeInfo();
 			resVO.setChangeFiles(fileList);
 			resVO.setDelSet(delSet);
+			resVO.setChangeLog(changeLog.toString());
 			return resVO;
 		} catch (Exception e) {
 			SysLog.log("下载这个期间内所有变更文件错误: ", e);

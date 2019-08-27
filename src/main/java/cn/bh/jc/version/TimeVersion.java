@@ -70,7 +70,8 @@ public class TimeVersion extends StoreVersion {
 	 * @return
 	 * @throws Exception
 	 */
-	public ChangeVO get() throws Exception {
+	@Override
+    public ChangeVO get() throws Exception {
 		ChangeVO resVO = new ChangeVO();
 		resVO.setVersion(this);
 		// 取得变化文件列表
