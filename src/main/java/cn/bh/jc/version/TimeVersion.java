@@ -27,10 +27,14 @@ public class TimeVersion extends StoreVersion {
 	/**
 	 * 时间变化版本
 	 * 
-	 * @param inConf 配置信息
-	 * @param target 可运行程序（编译后程序）保存地址
-	 * @param inProjectPath 项目工程地址
-	 * @param time 开始时间
+	 * @param inConf
+	 *            配置信息
+	 * @param target
+	 *            可运行程序（编译后程序）保存地址
+	 * @param inProjectPath
+	 *            项目工程地址
+	 * @param time
+	 *            开始时间
 	 * @throws Exception
 	 */
 	public TimeVersion(Config inConf, String target, String inProjectPath, String time) throws Exception {
@@ -40,11 +44,16 @@ public class TimeVersion extends StoreVersion {
 	/**
 	 * 时间变化版本
 	 * 
-	 * @param inConf 配置信息
-	 * @param target 可运行程序（编译后程序）保存地址
-	 * @param inProjectPath 项目工程地址
-	 * @param time 开始时间
-	 * @param inExportProjectName 导出工程名称
+	 * @param inConf
+	 *            配置信息
+	 * @param target
+	 *            可运行程序（编译后程序）保存地址
+	 * @param inProjectPath
+	 *            项目工程地址
+	 * @param time
+	 *            开始时间
+	 * @param inExportProjectName
+	 *            导出工程名称
 	 * @throws Exception
 	 */
 	public TimeVersion(Config inConf, String target, String inProjectPath, String time, String inExportProjectName) throws Exception {

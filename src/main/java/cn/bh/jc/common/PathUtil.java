@@ -16,8 +16,10 @@ public class PathUtil {
 	/**
 	 * 替换成目录
 	 * 
-	 * @param path 源目录
-	 * @param conf 配置
+	 * @param path
+	 *            源目录
+	 * @param conf
+	 *            配置
 	 * @return
 	 */
 	public static String replaceToTargetDir(String path, Config conf) {

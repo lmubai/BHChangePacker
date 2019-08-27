@@ -27,7 +27,8 @@ public class ChangeVO {
 	/**
 	 * 变化版本信息
 	 * 
-	 * @param version 变化版本信息
+	 * @param version
+	 *            变化版本信息
 	 */
 	public void setVersion(StoreVersion version) {
 		this.version = version;

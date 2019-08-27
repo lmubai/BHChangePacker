@@ -14,8 +14,10 @@ public class FileCopy {
 	/**
 	 * 复制单个文件
 	 * 
-	 * @param oldPath String 原文件路径 如：c:/fqf.txt
-	 * @param newPath String 复制后路径 如：f:/fqf.txt
+	 * @param oldPath
+	 *            String 原文件路径 如：c:/fqf.txt
+	 * @param newPath
+	 *            String 复制后路径 如：f:/fqf.txt
 	 * @return boolean
 	 * @throws Exception
 	 */
@@ -28,8 +30,10 @@ public class FileCopy {
 	/**
 	 * 复制单个文件
 	 * 
-	 * @param oldFile 原文件
-	 * @param newFile 复制后文件
+	 * @param oldFile
+	 *            原文件
+	 * @param newFile
+	 *            复制后文件
 	 * @return boolean
 	 * @throws Exception
 	 */

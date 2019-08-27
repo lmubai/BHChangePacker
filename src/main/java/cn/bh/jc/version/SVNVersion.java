@@ -1,12 +1,7 @@
 package cn.bh.jc.version;
 
 import java.net.URLDecoder;
-import java.util.ArrayList;
-import java.util.Collection;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 
 import org.tmatesoft.svn.core.SVNLogEntry;
 import org.tmatesoft.svn.core.SVNLogEntryPath;
@@ -40,11 +35,16 @@ public class SVNVersion extends StoreVersion {
 	/**
 	 * SVN变化版本
 	 * 
-	 * @param inConf 配置信息
-	 * @param target 可运行程序（编译后程序）保存地址
-	 * @param inPara 参数
-	 * @param startVersion 开始版本号
-	 * @param expName 导出工程名称
+	 * @param inConf
+	 *            配置信息
+	 * @param target
+	 *            可运行程序（编译后程序）保存地址
+	 * @param inPara
+	 *            参数
+	 * @param startVersion
+	 *            开始版本号
+	 * @param expName
+	 *            导出工程名称
 	 * @throws Exception
 	 */
 	public SVNVersion(Config inConf, SvnParaVO inPara) throws Exception {

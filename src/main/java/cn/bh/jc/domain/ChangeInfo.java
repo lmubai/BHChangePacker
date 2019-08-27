@@ -29,7 +29,8 @@ public class ChangeInfo {
 	/**
 	 * 变化文件列表
 	 * 
-	 * @param changeFiles 变化文件列表
+	 * @param changeFiles
+	 *            变化文件列表
 	 */
 	public void setChangeFiles(List<String> changeFiles) {
 		this.changeFiles = changeFiles;
@@ -47,7 +48,8 @@ public class ChangeInfo {
 	/**
 	 * 删除文件目录
 	 * 
-	 * @param delSet 删除文件目录
+	 * @param delSet
+	 *            删除文件目录
 	 */
 	public void setDelSet(Set<String> delSet) {
 		this.delSet = delSet;

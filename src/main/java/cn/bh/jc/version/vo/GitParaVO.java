@@ -29,12 +29,18 @@ public class GitParaVO {
 	/**
 	 * 构造
 	 * 
-	 * @param gitUrl 地址
-	 * @param gitName 用户名称
-	 * @param gitPass 用户密码
-	 * @param gitBranch 分支
-	 * @param startVersion 开始版本
-	 * @param target 编译后代码位置
+	 * @param gitUrl
+	 *            地址
+	 * @param gitName
+	 *            用户名称
+	 * @param gitPass
+	 *            用户密码
+	 * @param gitBranch
+	 *            分支
+	 * @param startVersion
+	 *            开始版本
+	 * @param target
+	 *            编译后代码位置
 	 */
 	public GitParaVO(String gitUrl, String gitName, String gitPass, String gitBranch, String startVersion, String target) {
 		super();
@@ -56,13 +62,20 @@ public class GitParaVO {
 	/**
 	 * 构造
 	 * 
-	 * @param gitUrl 地址
-	 * @param gitName 用户名称
-	 * @param gitPass 用户密码
-	 * @param gitBranch 分支
-	 * @param startVersion 开始版本
-	 * @param target 编译后代码位置
-	 * @param repositoryDir 本地资源目录（.git目录上层）
+	 * @param gitUrl
+	 *            地址
+	 * @param gitName
+	 *            用户名称
+	 * @param gitPass
+	 *            用户密码
+	 * @param gitBranch
+	 *            分支
+	 * @param startVersion
+	 *            开始版本
+	 * @param target
+	 *            编译后代码位置
+	 * @param repositoryDir
+	 *            本地资源目录（.git目录上层）
 	 */
 	public GitParaVO(String gitUrl, String gitName, String gitPass, String gitBranch, String startVersion, String target, File repositoryDir) {
 		super();

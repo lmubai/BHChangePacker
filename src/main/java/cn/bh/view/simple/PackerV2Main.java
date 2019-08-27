@@ -35,7 +35,7 @@ public class PackerV2Main {
 			DiffFileLister<SVNVersion> oper = new DiffFileLister<SVNVersion>(chageList);
 			List<ChangeVO> list = oper.listChange();
 			// 打包
-			DiffFilePacker p = new DiffFilePacker("C:/Users/Administrator/Desktop", conf);
+			DiffFilePacker p = new DiffFilePacker("G:\\packer", conf);
 			p.pack(list);
 			SysLog.log("\r\n 处理完成 。。。。。。    ");
 		} catch (Exception e) {
@@ -44,11 +44,11 @@ public class PackerV2Main {
 	}
 
 	public static SvnParaVO buildStaticVO() {
-		String url = "svn://172.16.0.155:9999/jcsvn/JC2018-045-ZW%E7%8E%AF%E4%BF%9D%E7%9D%A3%E6%9F%A5%E4%BF%A1%E8%AE%BF%E6%A1%88%E4%BB%B6%E7%BB%9F%E8%AE%A1%E5%B9%B3%E5%8F%B0/00SRC/xf_statis";
-		String username = "liubq";
-		String password = "lbq123456";
-		String exeHome = "D:\\tomcat\\webapps\\ROOT";
-		Long startVersion = 224421L;
-		return new SvnParaVO(url, username, password, startVersion, exeHome).setExpName("ROOT");
+		String url = "https://10.65.12.21/svn/product/pwlp/branch/pwlp-hubei-cluemng";
+		String username = "lixiaolong";
+		String password = "123456";
+		String target = "E:\\IDEAProject\\pwlp\\pwlp-hubei\\target\\pwlp-1.0.0";
+		Long startVersion = 30050L;
+		return new SvnParaVO(url, username, password, startVersion, target).setExpName("pwlp");
 	}
 }

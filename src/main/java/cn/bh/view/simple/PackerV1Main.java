@@ -11,9 +11,8 @@ import cn.bh.jc.domain.Config;
 import cn.bh.jc.version.TimeVersion;
 
 /**
- * 最后修改时间比较方式打包
- * 注意，必须保持本地最新代码，因为要取本地tomcat下编译好的class,js等文件，本项目不能自动编译
- * resource 会自动跳过，配置文件自己拷贝
+ * 最后修改时间比较方式打包 注意，必须保持本地最新代码，因为要取本地tomcat下编译好的class,js等文件，本项目不能自动编译 resource
+ * 会自动跳过，配置文件自己拷贝
  * 
  * @author liubq
  * @since 2017年12月21日

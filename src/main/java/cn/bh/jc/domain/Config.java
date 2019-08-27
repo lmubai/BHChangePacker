@@ -46,8 +46,10 @@ public class Config {
 	/**
 	 * 添加目录对应关系
 	 * 
-	 * @param src 代码目录
-	 * @param dest 编译后目录
+	 * @param src
+	 *            代码目录
+	 * @param dest
+	 *            编译后目录
 	 */
 	public void addRelPath(String src, String dest) {
 		if (src == null || src.trim().length() == 0) {
@@ -62,7 +64,8 @@ public class Config {
 	/**
 	 * 移除目录对应关系
 	 * 
-	 * @param src 代码目录
+	 * @param src
+	 *            代码目录
 	 */
 	public void removeRelPath(String src) {
 		if (src == null || src.trim().length() == 0) {
@@ -83,7 +86,8 @@ public class Config {
 	/**
 	 * 添加需要排除的文件目录
 	 * 
-	 * @param dir 文件目录
+	 * @param dir
+	 *            文件目录
 	 */
 	public void addExclusiveDir(String dir) {
 		if (dir == null || dir.trim().length() == 0) {
@@ -97,7 +101,8 @@ public class Config {
 	/**
 	 * 移除需要排除的文件目录
 	 * 
-	 * @param dir 文件目录
+	 * @param dir
+	 *            文件目录
 	 */
 	public void removeExclusiveDir(String dir) {
 		if (dir == null || dir.trim().length() == 0) {
@@ -118,7 +123,8 @@ public class Config {
 	/**
 	 * 添加需要排除的文件扩展名称
 	 * 
-	 * @param fileExt 文件扩展名称 例如 property
+	 * @param fileExt
+	 *            文件扩展名称 例如 property
 	 */
 	public void addExclusiveFileExt(String fileExt) {
 		if (fileExt == null || fileExt.trim().length() == 0) {
@@ -130,7 +136,8 @@ public class Config {
 	/**
 	 * 移除需要排除的文件扩展名称
 	 * 
-	 * @param dir 文件扩展名称
+	 * @param dir
+	 *            文件扩展名称
 	 */
 	public void removeExclusiveFileExt(String fileExt) {
 		if (fileExt == null || fileExt.trim().length() == 0) {

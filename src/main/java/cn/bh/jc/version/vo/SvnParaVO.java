@@ -20,11 +20,16 @@ public class SvnParaVO {
 	private String expName;
 
 	/**
-	 * @param svnUrl svn地址
-	 * @param user 用户名称
-	 * @param pwd 用户密码
-	 * @param startVersion 版本本号
-	 * @param target class目录地址
+	 * @param svnUrl
+	 *            svn地址
+	 * @param user
+	 *            用户名称
+	 * @param pwd
+	 *            用户密码
+	 * @param startVersion
+	 *            版本本号
+	 * @param target
+	 *            class目录地址
 	 */
 	public SvnParaVO(String svnUrl, String user, String pwd, Long startVersion, String target) {
 		super();
@@ -74,7 +79,8 @@ public class SvnParaVO {
 	/**
 	 * 导出工程名称
 	 * 
-	 * @param expName 导出工程名称
+	 * @param expName
+	 *            导出工程名称
 	 */
 	public SvnParaVO setExpName(String expName) {
 		this.expName = expName;

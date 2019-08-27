@@ -1,11 +1,7 @@
 package cn.bh.jc.version;
 
 import java.io.File;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.diff.DiffEntry;
@@ -35,11 +31,16 @@ public class GitVersion extends StoreVersion {
 	/**
 	 * GIT变化版本
 	 * 
-	 * @param inConf 配置信息
-	 * @param target 可运行程序（编译后程序）保存地址
-	 * @param inPara 参数
-	 * @param startVersion 开始版本号
-	 * @param expName 导出工程名称
+	 * @param inConf
+	 *            配置信息
+	 * @param target
+	 *            可运行程序（编译后程序）保存地址
+	 * @param inPara
+	 *            参数
+	 * @param startVersion
+	 *            开始版本号
+	 * @param expName
+	 *            导出工程名称
 	 * @throws Exception
 	 */
 	public GitVersion(Config inConf, GitParaVO inPara) throws Exception {

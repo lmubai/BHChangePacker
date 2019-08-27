@@ -15,10 +15,14 @@ public abstract class StoreVersion {
 	/**
 	 * 构造函数
 	 * 
-	 * @param inConf 配置
-	 * @param target 目标
-	 * @param path 工程路径
-	 * @param inExportProjectName 导出的工程名称
+	 * @param inConf
+	 *            配置
+	 * @param target
+	 *            目标
+	 * @param path
+	 *            工程路径
+	 * @param inExportProjectName
+	 *            导出的工程名称
 	 */
 	public StoreVersion(Config inConf, String target, String path, String inExportProjectName) {
 		this.setTargetPath(target);
@@ -79,7 +83,8 @@ public abstract class StoreVersion {
 	/**
 	 * 设定取得项目名称
 	 * 
-	 * @param projectName 取得项目名称
+	 * @param projectName
+	 *            取得项目名称
 	 */
 	public void setProjectName(String projectName) {
 		this.projectName = projectName;
@@ -88,7 +93,8 @@ public abstract class StoreVersion {
 	/**
 	 * 设定导出工程名称
 	 * 
-	 * @param exportProjectName 导出工程名称
+	 * @param exportProjectName
+	 *            导出工程名称
 	 */
 	public void setExportProjectName(String exportProjectName) {
 		this.exportProjectName = exportProjectName;

@@ -3,11 +3,7 @@ package cn.bh.jc;
 import java.io.File;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.Comparator;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 
 import cn.bh.jc.common.FileCopy;
 import cn.bh.jc.common.PathUtil;
@@ -33,8 +29,10 @@ public class DiffFilePacker {
 	/**
 	 * 变更文件打包工具
 	 * 
-	 * @param savePath 打包文件保存路径 例如：C:\\Users\\Administrator\\Desktop\\test
-	 * @param inConf 默认配置
+	 * @param savePath
+	 *            打包文件保存路径 例如：C:\\Users\\Administrator\\Desktop\\test
+	 * @param inConf
+	 *            默认配置
 	 */
 	public DiffFilePacker(String savePath, Config inConf) {
 		if (savePath == null || savePath.trim().length() == 0) {
@@ -62,7 +60,8 @@ public class DiffFilePacker {
 	/**
 	 * 打包运行
 	 * 
-	 * @param mapList 文件列表
+	 * @param mapList
+	 *            文件列表
 	 * @return 被打包的文件列表
 	 * @throws Exception
 	 */
@@ -190,8 +189,10 @@ public class DiffFilePacker {
 	/**
 	 * 判断是否相等
 	 * 
-	 * @param file 待对比文件名
-	 * @param inFileName 变化文件名
+	 * @param file
+	 *            待对比文件名
+	 * @param inFileName
+	 *            变化文件名
 	 * @return
 	 */
 	private boolean isEquals(File file, String inPathName) {
