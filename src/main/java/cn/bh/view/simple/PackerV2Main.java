@@ -44,11 +44,11 @@ public class PackerV2Main {
 	}
 
 	public static SvnParaVO buildStaticVO() {
-		String url = "https://10.65.12.21/svn/product/pwlp/branch/pwlp-hubei-cluemng";
+		String url = "https://10.65.12.21/svn/product/pwlp/pwlp-hubei";
 		String username = "lixiaolong";
 		String password = "123456";
-		String target = "E:\\IDEAProject\\pwlp\\pwlp-hubei\\target\\pwlp-1.0.0";
-		Long startVersion = 30050L;
+		String target = "E:\\IDEAProject\\pwlp\\pwlp-hubei\\target\\pwlp-hubei-1.0.0";
+		Long startVersion = 30434L;
 		return new SvnParaVO(url, username, password, startVersion, target).setExpName("pwlp");
 	}
 }

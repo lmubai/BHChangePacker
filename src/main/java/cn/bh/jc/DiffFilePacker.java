@@ -25,6 +25,7 @@ public class DiffFilePacker {
 	private String deleteFile;
 	// 默认配置
 	private Config conf;
+	private String metadataFromDir = "E:\\IDEAProject\\pwlp\\pwlp-hubei\\";
 
 	/**
 	 * 变更文件打包工具
@@ -60,7 +61,7 @@ public class DiffFilePacker {
 	/**
 	 * 打包运行
 	 * 
-	 * @param mapList
+	 * @param cList
 	 *            文件列表
 	 * @return 被打包的文件列表
 	 * @throws Exception
@@ -71,7 +72,6 @@ public class DiffFilePacker {
 		if (cList == null || cList.size() == 0) {
 			return actFileList;
 		}
-		StringBuilder allChangeLog = new StringBuilder();
 		for (ChangeVO entry : cList) {
 			// 取得变更文件对应可执行文件
 			File targetFile = new File(entry.getVersion().getTargetPath());
@@ -83,13 +83,12 @@ public class DiffFilePacker {
 			// 排序
 			Collections.sort(exeChangeFileList, new Comparator<File>() {
 				@Override
-                public int compare(File o1, File o2) {
+				public int compare(File o1, File o2) {
 					return o1.getAbsolutePath().compareTo(o2.getAbsolutePath());
 				}
 
 			});
 			// 拷贝文件
-			SysLog.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
 			int len = targetFile.getAbsolutePath().length() + 1;
 			File newFile;
 			// 保存的文件前缀
@@ -99,9 +98,14 @@ public class DiffFilePacker {
 				if (f.isDirectory()) {
 					continue;
 				}
-				newFile = new File(saveFilePre + f.getAbsolutePath().substring(len));
-				if (!newFile.getParentFile().exists()) {
-					newFile.mkdirs();
+				String path = f.getPath();
+				if (path.contains("metadata")) {
+					newFile = new File(exportSavePath + File.separator + path.substring(path.lastIndexOf("\\") + 1, path.length()));
+				} else {
+					newFile = new File(saveFilePre + f.getAbsolutePath().substring(len));
+					if (!newFile.getParentFile().exists()) {
+						newFile.mkdirs();
+					}
 				}
 				try {
 					FileCopy.copyFile(f, newFile);
@@ -129,15 +133,16 @@ public class DiffFilePacker {
 				SysLog.log("删除文件列表---------------------------------");
 			}
 			SysLog.log("\r\n 项目：" + entry.getVersion().getProjectName() + " 打包完成，打包到地址：" + saveFilePre);
-			SysLog.log("++++++++++++++++++++++++++++++++++++++++++++++++++++++++");
-			allChangeLog.append(entry.getInfo().getChangeLog());
+
+			SysLog.log("++++++++++++++++++++++++++增量日志记录开始++++++++++++++++++++++++++++++");
+			File allChangeLogFile = new File(exportSavePath + "/" + entry.getVersion().getProjectName() + "_变更日志记录.txt");
+			String changeLog = entry.getInfo().getChangeLog() + System.getProperty("line.separator");
+			Files.write(Paths.get(allChangeLogFile.getAbsolutePath()), changeLog.getBytes());
+			SysLog.log(changeLog);
+			SysLog.log("++++++++++++++++++++++++++增量日志记录结束++++++++++++++++++++++++++++++");
 		}
 
 		SysLog.log("\r\n打包完成 共打包" + actFileList.size() + "个文件");
-		SysLog.log("************************************************************");
-		SysLog.log("*****************************增量日志开始*********************");
-		SysLog.log(allChangeLog.toString());
-        SysLog.log("*****************************增量日志结束*********************");
 
 		return actFileList;
 	}
@@ -166,7 +171,11 @@ public class DiffFilePacker {
 				}
 			}
 			if (!find) {
-				SysLog.log("文件(" + fileName + ")在目标目录下(" + dir + ")没有找到对应文件，可能该文件已经被删除，跳过，请确认是否正确！");
+				if (fileName.contains("metadata")) {
+					exeChangeFileList.add(new File(metadataFromDir + fileName));
+				} else {
+					SysLog.log("文件(" + fileName + ")在目标目录下(" + dir + ")没有找到对应文件，可能该文件已经被删除，跳过，请确认是否正确！");
+				}
 			}
 		}
 		return exeChangeFileList;
@@ -197,7 +206,7 @@ public class DiffFilePacker {
 	 * 
 	 * @param file
 	 *            待对比文件名
-	 * @param inFileName
+	 * @param inPathName
 	 *            变化文件名
 	 * @return
 	 */
